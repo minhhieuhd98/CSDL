@@ -19,7 +19,7 @@ import java.sql.Statement;
 public class connectDB {
     private Connection con; 
     public Connection connect(){
-        String url = "jdbc:postgresql://localhost:5432/qlkh";
+        String url = "jdbc:postgresql://localhost:5432/CSDL";
         try {
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, "postgres", "123456");
