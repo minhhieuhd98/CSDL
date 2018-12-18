@@ -4,12 +4,7 @@
  * and open the template in the editor.
  */
 package thcsdl;
-import database_conf.connectDB;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import frm.Dangnhap;
 
 
 public class THCSDL {
@@ -19,19 +14,8 @@ public class THCSDL {
      */
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
-        String query = "SELECT sp.masp,sp.tensp FROM sanpham sp";
-        connectDB Test = new connectDB();
-        ResultSet rs = Test.ExcuteGetResultData(query);
-        
-        try {
-            while(rs.next()){
-                int masp = rs.getInt("masp");
-                String tensp = rs.getString("tensp");
-                System.out.println(masp+" "+tensp);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(THCSDL.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Dangnhap login = new Dangnhap();
+        login.show();
     }
     
 }
