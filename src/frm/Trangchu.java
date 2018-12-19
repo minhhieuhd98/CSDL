@@ -5,6 +5,10 @@
  */
 package frm;
 
+import controller.FuncKhachHang;
+import controller.FuncNhanVien;
+import controller.FuncSanPham;
+import controller.FuncTaiKhoan;
 import database_conf.connectDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -121,6 +125,19 @@ public class Trangchu extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable9 = new javax.swing.JTable();
+        jLabel36 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jButton8 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -652,7 +669,7 @@ public class Trangchu extends javax.swing.JFrame {
                                             .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -661,7 +678,7 @@ public class Trangchu extends javax.swing.JFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addGap(0, 406, Short.MAX_VALUE)
+                                .addGap(0, 411, Short.MAX_VALUE)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jRadioButton3)
                                     .addComponent(jRadioButton4)
@@ -702,9 +719,9 @@ public class Trangchu extends javax.swing.JFrame {
                                     .addGroup(jPanel11Layout.createSequentialGroup()
                                         .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(3, 3, 3)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)))
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -719,20 +736,137 @@ public class Trangchu extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Danh sách NV", jPanel11);
+
+        jPanel12.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel12ComponentShown(evt);
+            }
+        });
+
+        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "STT", "Mã NV", "Tên NV", "UserName", "Password", "Quyền"
+            }
+        ));
+        jTable9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable9MouseClicked(evt);
+            }
+        });
+        jScrollPane10.setViewportView(jTable9);
+
+        jLabel36.setText("Mã NV");
+
+        jLabel37.setText("Username");
+
+        jLabel38.setText("Password");
+
+        jLabel39.setText("Quyền");
+
+        jRadioButton5.setText("Admin?");
+
+        jButton8.setText("ADD");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton19.setText("DELETE");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+
+        jButton20.setText("RESET");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1275, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioButton5))
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
+                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
+                                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(205, 205, 205)
+                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 619, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRadioButton5))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Tài khoản", jPanel12);
@@ -876,7 +1010,7 @@ public class Trangchu extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField4))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -1027,7 +1161,7 @@ public class Trangchu extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 619, Short.MAX_VALUE)
+            .addGap(0, 623, Short.MAX_VALUE)
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1226,7 +1360,7 @@ public class Trangchu extends javax.swing.JFrame {
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Khách Hàng", new javax.swing.ImageIcon(getClass().getResource("/image/khachhang.png")), jPanel3); // NOI18N
@@ -1272,69 +1406,34 @@ public class Trangchu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String masp, tensp, hangsx, gianhap, giaban, chuthich, loaisp;
+        int tonkho = 0; boolean status = false;
         masp = txtMasp.getText();
         tensp = txtTensp.getText();
         loaisp = GetCbbSelected(cbLoaisp);
         hangsx = txtHangsx.getText();
         gianhap = txtGiaNhap.getText();
         giaban = txtGiaBan.getText();
+        String linkImage = "xxxx/xxxx";
         chuthich = txtChuthich.getText();
         
         if(masp.equals("") || tensp.equals("") || loaisp.equals("") || hangsx.equals("") ||
                 gianhap.equals("") || giaban.equals(""))
         {
             JOptionPane.showMessageDialog(null, "Bạn đang nhập thiếu thông tin! Vui lòng kiểm tra lại đầy đủ trước khi thêm!");
+
         }
         else {
-           
-            try {
-                String cautruyvan = "insert into \"sanpham\"(\"masp\", \"tensp\", \"loaisp\", \"hangsx\", \"gianhap\", \"giaban\",\"tonkho\",\"trangthai\",\"image\",\"chuthich\")"
-                        + "values(?,?,?,?,?,?,?,?,?,?)";
-                
-                
-                PreparedStatement stmt = conn.prepareStatement(cautruyvan);
-                
-                stmt.setInt(1, Integer.valueOf(masp));
-                stmt.setString(2, tensp);
-                stmt.setInt(3, Integer.valueOf(loaisp));
-                stmt.setString(4, hangsx);
-                stmt.setInt(5, Integer.valueOf(gianhap));
-                stmt.setInt(6, Integer.valueOf(giaban));
-                stmt.setInt(7, 0);
-                stmt.setBoolean(8, true);
-                stmt.setString(9, "xxxxx");
-                stmt.setString(10, chuthich);
-                
-                if(isMasp(Integer.valueOf(masp))){
-                    stmt.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Đã thêm!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Đã tồn tại mã sp trên");
-                }
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Sanpham sp = new Sanpham(Integer.parseInt(masp), tensp, Integer.parseInt(loaisp), hangsx, Integer.parseInt(gianhap), Integer.parseInt(giaban), tonkho, status, linkImage, chuthich);
             
-        }    
-        showsanpham();
+            FuncSanPham sanpham = new FuncSanPham();
+            
+            sanpham.themsp(sp);
+                
+            sanpham.showsanpham(jTable1);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private boolean isMasp(int x){
-        String truyvan ="select * from sanpham sp where sp.masp=?";
-        try {
-            PreparedStatement stmt = conn.prepareStatement(truyvan);
-            stmt.setInt(1, x);
-            
-            ResultSet rs = stmt.executeQuery();
-            if(rs == null) return false;
-  
-        } catch (SQLException ex) {
-            Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return true;
-    }
-    
+
     private void txtMaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaspActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaspActionPerformed
@@ -1350,7 +1449,8 @@ public class Trangchu extends javax.swing.JFrame {
 
     private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
         // TODO add your handling code here:
-        showsanpham();
+        FuncSanPham sp = new FuncSanPham();
+        sp.showsanpham(jTable1);
         cbLoaisp.setModel(LayDuLieucbb("loaisanpham", "ten", "id"));    
         
     }//GEN-LAST:event_jPanel1ComponentShown
@@ -1371,28 +1471,11 @@ public class Trangchu extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String masp = txtMasp.getText();
-        xoasanpham(masp);
-        showsanpham();
+        FuncSanPham sp = new FuncSanPham();
+        sp.xoasanpham(masp);
+        sp.showsanpham(jTable1);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void xoasanpham(String masp){
-        if(txtMasp.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Mời bạn chọn mã sản phẩm cho mình trước khi xóa nhé!");
-        } else {
-            //Thuc hien chuc nang xoa
-            String query = "DELETE FROM \"sanpham\" as \"sp\" WHERE \"masp\" = ?";           
-            
-            try {
-                stmt = conn.prepareStatement(query);
-                stmt.setInt(1, Integer.valueOf(masp));
-                stmt.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Đã xóa thành công");
-            } catch (SQLException ex) {
-                Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        }
-    }
     private void jTabbedPane3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane3ComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane3ComponentShown
@@ -1422,7 +1505,7 @@ public class Trangchu extends javax.swing.JFrame {
 
     private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
         // TODO add your handling code here:
-        showkhachhang();
+        FuncKhachHang kh = new FuncKhachHang(); kh.showkhachhang(jTable3);
         String cautruyvan;
         cautruyvan = "select distinct kh.loaikh from khachhang kh";
         
@@ -1466,17 +1549,24 @@ public class Trangchu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
-            // TODO add your handling code here:
-            if(themkh()){
-                JOptionPane.showMessageDialog(null, "Them khach hang thanh cong");
-            } else {
-                JOptionPane.showMessageDialog(null, "Ban chua nhap du thong tin");
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        showkhachhang();
+        FuncKhachHang kh = new FuncKhachHang();
+        int makhAdd;
+        String tenkhAdd ="", diachikhAdd = "", sdtkhAdd = "", loaikhAdd = "";
+        boolean gioitinh = true;
+        if(jRadioButton1.isSelected()) gioitinh=false;
+        else if(jRadioButton2.isSelected()) gioitinh=true;
+        
+        makhAdd = Integer.parseInt(makh.getText());
+        tenkhAdd = tenkh.getText();
+        Time ngaysinh = new Time();
+        Date ngaysinhkhAdd = new Date(Integer.parseInt(ngaysinh.getDate(jNgay)), Integer.parseInt(ngaysinh.getMonth(jThang)), Integer.parseInt(ngaysinh.getYear(jNam)));
+
+        diachikhAdd = diachikh.getText();
+        sdtkhAdd = sdtkh.getText();
+        loaikhAdd = loaikh.getSelectedItem().toString();
+        KhachHang khachhang = new KhachHang(makhAdd, tenkhAdd, ngaysinhkhAdd, gioitinh, diachikhAdd, sdtkhAdd, loaikhAdd);
+        
+        kh.showkhachhang(jTable3);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1492,17 +1582,19 @@ public class Trangchu extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        if(!makh.getText().isEmpty() && xoakhachhang(makh.getText())){
+        FuncKhachHang kh = new FuncKhachHang();
+        if(!makh.getText().isEmpty() && kh.xoakhachhang(Integer.parseInt(makh.getText()))){
             JOptionPane.showMessageDialog(null, "Xoa khach hang thanh cong");
         } else {
             JOptionPane.showMessageDialog(null, "Co loi xay ra, vui long kiem tra lai!");
         }
-        showkhachhang();
+        kh.showkhachhang(jTable3);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jPanel11ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel11ComponentShown
         // TODO add your handling code here:
-        shownhanvien();
+        FuncNhanVien nv = new FuncNhanVien();
+        nv.shownhanvien(jTable4);
         Time ngaysinh = new Time();
         ngaysinh.setDate(jComboBox1); ngaysinh.setMonth(jComboBox2); ngaysinh.setYear(jComboBox5);
         
@@ -1523,25 +1615,41 @@ public class Trangchu extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        if(themnv()){
+        int manv = Integer.parseInt(jTFmanv.getText());
+        String tennv = jTFtennv.getText();
+        Time sngaysinh = new Time();
+        Date ngaysinh = new Date(Integer.parseInt(sngaysinh.getDate(jComboBox1)), Integer.parseInt(sngaysinh.getMonth(jComboBox2)), Integer.parseInt(sngaysinh.getYear(jComboBox5)));
+        boolean gioitinh = false;
+        if(jRadioButton4.isSelected()) gioitinh=true;
+        
+        Time nvl = new Time();
+        Date ngayvaolam = new Date(Integer.parseInt(nvl.getDate(jComboBox6)), Integer.parseInt(nvl.getMonth(jComboBox7)), Integer.parseInt(nvl.getYear(jComboBox8)));
+        
+        String chucvu = jTFchucvu.getText();
+        String diachi = jTFdiachi.getText();
+        String sdt = jTFsdt.getText();
+        FuncNhanVien nhanvien = new FuncNhanVien();
+        if(nhanvien.themnv(new Nhanvien(manv, tennv, ngaysinh, gioitinh, ngayvaolam,chucvu, diachi, sdt))){
             JOptionPane.showMessageDialog(null, "Them thanh cong");
         } else {
-            JOptionPane.showMessageDialog(null, "Them that");
+            JOptionPane.showMessageDialog(null, "Them that bai");
         }
-        shownhanvien();
+        nhanvien.shownhanvien(jTable4);
               
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
-        if(xoanhanvien(Integer.parseInt(jTFmanv.getText())) == true) {
+        FuncNhanVien nv = new FuncNhanVien();
+        if(nv.xoanhanvien(Integer.parseInt(jTFmanv.getText())) == true) {
             JOptionPane.showMessageDialog(null, "Xoa thanh cong");
         } else {
             JOptionPane.showMessageDialog(null, "That bai! Kiem tra lai thong tin");
         }
-        shownhanvien();
+        nv.shownhanvien(jTable4);
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
         // TODO add your handling code here:
         int row = jTable4.getSelectedRow();
@@ -1563,143 +1671,63 @@ public class Trangchu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTable4MouseClicked
 
-    private boolean themnv(){
-        Nhanvien nv = new Nhanvien();
-        nv.setMaNV(Integer.parseInt(jTFmanv.getText()));
-        nv.setTenNV(jTFtennv.getText());
-        Time ngaysinh = new Time();
-        nv.setNgaySinh(Integer.parseInt(ngaysinh.getDate(jComboBox1)), Integer.parseInt(ngaysinh.getMonth(jComboBox2)), Integer.parseInt(ngaysinh.getYear(jComboBox5)));
-        Time nvl = new Time();
-        nv.setNgayvaolam(Integer.parseInt(ngaysinh.getDate(jComboBox6)), Integer.parseInt(ngaysinh.getMonth(jComboBox7)), Integer.parseInt(ngaysinh.getYear(jComboBox8)));
+    private void jPanel12ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel12ComponentShown
+        // TODO add your handling code here:
+        FuncTaiKhoan tk = new FuncTaiKhoan();
+        tk.showTaiKhoan(jTable9);
         
-        nv.setChucvu(jTFchucvu.getText());
-        nv.setDiachi(jTFdiachi.getText());
-        nv.setSDT(jTFsdt.getText());
-        if(jRadioButton3.isSelected()) nv.setGioitinh(false);
-        else if(jRadioButton4.isSelected()) nv.setGioitinh(true);
-        System.out.println(nv.getSDT());
-        String query = "INSERT INTO nhanvien(manv, tennv, ngaysinh, gioitinh, ngayvaolam, chucvu, diachi, sdt) VALUES(?,?,?,?,?,?,?,?)";
-        try {
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, nv.getMaNV());
-            stmt.setString(2, nv.getTenNV());
-            stmt.setDate(3, nv.getNgaysinh());
-            stmt.setBoolean(4, nv.getGioitinh());
-            stmt.setDate(5, nv.getNgayvaolam());
-            
-            stmt.setString(6, nv.getChucvu());
-            stmt.setString(7, nv.getDiachi());
-            stmt.setString(8, nv.getSDT());
-            if(stmt.executeUpdate()>0) return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-    
-    private boolean xoanhanvien(int x){
-        String query = "DELETE FROM \"nhanvien\" as \"nv\" WHERE \"manv\" = ?";           
-            try {
-                stmt = conn.prepareStatement(query);
-                stmt.setInt(1, Integer.valueOf(x));
-                stmt.executeUpdate();
-                return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
+    }//GEN-LAST:event_jPanel12ComponentShown
+
+    private void jTable9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable9MouseClicked
+        // TODO add your handling code here:
+        int row = jTable9.getSelectedRow();
+        jTextField2.setText(jTable9.getValueAt(row, 1).toString());
+        jTextField5.setText(jTable9.getValueAt(row, 3).toString());
+        jTextField6.setText(jTable9.getValueAt(row, 4).toString());
+        
+        if(jTable9.getValueAt(row, 5).toString() == "true") jRadioButton5.setSelected(true);
+        else jRadioButton5.setSelected(false);
+        
+    }//GEN-LAST:event_jTable9MouseClicked
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+        jTextField2.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jRadioButton5.setSelected(false);
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        boolean quyen = jRadioButton5.isSelected();
+        Taikhoan tk = new Taikhoan(Integer.parseInt(jTextField2.getText()), jTextField5.getText(), jTextField6.getText(), quyen);
+        
+        FuncTaiKhoan taikhoan = new FuncTaiKhoan();
+        
+        if(!taikhoan.isMaNV(Integer.parseInt(jTextField2.getText())) && !taikhoan.isTenDN(jTextField5.getText()) && !taikhoan.isPassWord(jTextField6.getText())){
+            if(taikhoan.themTK(tk)) {
+                JOptionPane.showMessageDialog(null, "them thanh cong tai khoan");
+            } else {
+                JOptionPane.showMessageDialog(null, "Them TK that bai!");
             }
-        return false;
-    }
-    
-    private void shownhanvien(){
-        String query = "SELECT nv.manv, nv.tennv, nv.ngaysinh, nv.gioitinh, nv.ngayvaolam, nv.chucvu, nv.diachi, nv.sdt, nv.ghichu from nhanvien nv";
-        
-        int c = 0;
-        
-        Object[] obj = 
-                new Object[]{"STT", "manv", "tennv", "ngaysinh", "gioitinh", "ngayvaolam","chucvu", "diachi", "sdt","ghichu"};
-        DefaultTableModel tableModel = new DefaultTableModel(obj, 0);
-        jTable4.setModel(tableModel);
-        
-        ResultSet rs = db.ExcuteGetResultData(query);
-        
-        try {
-            while(rs.next()){
-                Object[] item = new Object[10];
-                item[0] = c++;
-                item[1] = rs.getInt("manv");
-                item[2] = rs.getString("tennv");
-                item[3] = rs.getDate("ngaysinh");
-                item[4] = rs.getString("gioitinh");
-                item[5] = rs.getDate("ngayvaolam");
-                item[6] = rs.getString("chucvu");
-                item[7] = rs.getString("diachi");
-                item[8] = rs.getString("sdt");
-                item[9] = rs.getString("ghichu");
-                
-                tableModel.addRow(item);
+        }
+        taikhoan.showTaiKhoan(jTable9);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+        FuncTaiKhoan tk = new FuncTaiKhoan();
+        if(!jTextField2.getText().equals("")) {
+            if(tk.xoatk(Integer.parseInt(jTextField2.getText()))) {
+                JOptionPane.showMessageDialog(null, "Xoa TK thanh cong");
+            } else {
+                JOptionPane.showMessageDialog(null, "Xoa Khong Thanh cong!!!");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+        tk.showTaiKhoan(jTable9);
+    }//GEN-LAST:event_jButton19ActionPerformed
     
-    private boolean xoakhachhang(String x){
-        String query = "DELETE FROM \"khachhang\" as \"kh\" WHERE \"makh\" = ?";           
-            
-            try {
-                stmt = conn.prepareStatement(query);
-                stmt.setInt(1, Integer.valueOf(x));
-                stmt.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Đã xóa thành công");
-            } catch (SQLException ex) {
-                Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        return false;
-    }
-    
-    private boolean themkh() throws ParseException{
-        int makhAdd;
-        String tenkhAdd ="", ngaysinhkhAdd = "", diachikhAdd = "", sdtkhAdd = "", loaikhAdd = "";
-        boolean gioitinh = true;
-        if(jRadioButton1.isSelected()) gioitinh=false;
-        else if(jRadioButton2.isSelected()) gioitinh=true;
-        
-        makhAdd = Integer.parseInt(makh.getText());
-        tenkhAdd = tenkh.getText();
-        Time BirthDay = new Time();
-        ngaysinhkhAdd = BirthDay.getYear(jNam).toString()+"/"+BirthDay.getMonth(jThang)+"/"+BirthDay.getDate(jNgay);
-        diachikhAdd = diachikh.getText();
-        sdtkhAdd = sdtkh.getText();
-        loaikhAdd = loaikh.getSelectedItem().toString();
-        
-        if(makh.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ban chua nhap ma kh");
-            return false;
-        } else {
-            if(tenkhAdd.equals("") || ngaysinhkhAdd.equals("") || diachikhAdd.equals("") ||
-                    sdtkhAdd.equals("") || loaikhAdd.equals("")) return false;
-        }
-        String query = "insert into khachhang(makh, tenkh, ngaysinh, gioitinh, diachi,sdt, loaikh) values (?,?,?,?,?,?,?)";
-        System.out.println(ngaysinhkhAdd);
-        try {
-            stmt = conn.prepareStatement(query);
-            stmt.setInt(1, makhAdd);
-            stmt.setString(2, tenkhAdd);
-            Date Date1 = new Date(Integer.parseInt(BirthDay.getYear(jNam)), Integer.parseInt(BirthDay.getMonth(jThang)), Integer.parseInt(BirthDay.getDate(jNgay)));
-            stmt.setDate(3, Date1);
-            stmt.setBoolean(4, gioitinh);
-            stmt.setString(5, diachikhAdd);
-            stmt.setString(6, sdtkhAdd);
-            stmt.setString(7, loaikhAdd);
-            if(stmt.executeUpdate() > 0) return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        return false;
-    }
-        
     public DefaultComboBoxModel LayDuLieucbb(String bang, String Ten, String Ma) {
         String cautruyvan;
         cautruyvan = "select distinct * from " + bang;
@@ -1780,73 +1808,6 @@ public class Trangchu extends javax.swing.JFrame {
         
     }
     
-    private void showsanpham() {
-        String query = "SELECT sp.masp, sp.tensp, sp.loaisp, sp.hangsx, sp.gianhap, sp.giaban,sp.tonkho, sp.trangthai, sp.image, sp.chuthich "
-                + "FROM sanpham sp INNER JOIN loaisanpham lsp ON lsp.id=sp.loaisp ORDER BY masp ASC" ;
-        
-        int c = 0;
-        
-        Object[] obj = 
-                new Object[]{"STT", "masp", "tensp", "loaisp", "hangsx", "gianhap", "giaban","tonkho", "trangthai","image","chuthich"};
-        DefaultTableModel tableModel = new DefaultTableModel(obj, 0);
-        jTable1.setModel(tableModel);
-        
-        ResultSet rs = db.ExcuteGetResultData(query);
-        
-        try {
-            while(rs.next()) {
-                c++;
-                Object[] item = new Object[11];
-                item[0] = c;
-                item[1] = rs.getInt("masp");
-                item[2] = rs.getString("tensp");
-                item[3] = rs.getString("loaisp");
-                item[4] = rs.getString("hangsx"); // mau sua cai nay
-                item[5] = rs.getInt("gianhap");
-                item[6] = rs.getInt("giaban");
-                item[7] = rs.getInt("tonkho");
-                item[8] = rs.getString("trangthai");
-                item[9] = rs.getString("image");
-                item[10] = rs.getString("chuthich");
-                //System.out.println(item[1]);
-                tableModel.addRow(item);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    private void showkhachhang(){
-        String query = "SELECT kh.makh, kh.tenkh, kh.tenkh, kh.ngaysinh, kh.gioitinh, kh.diachi, kh.sdt, kh.loaikh from khachhang kh";
-        
-        int c = 0;
-        
-        Object[] obj = 
-                new Object[]{"STT", "makh", "tenkh", "ngaysinh", "gioitinh", "diachi", "sdt","loaikh"};
-        DefaultTableModel tableModel = new DefaultTableModel(obj, 0);
-        jTable3.setModel(tableModel);
-        
-        ResultSet rs = db.ExcuteGetResultData(query);
-        
-        try {
-            while(rs.next()){
-                Object[] item = new Object[8];
-                item[0] = c++;
-                item[1] = rs.getInt("makh");
-                item[2] = rs.getString("tenkh");
-                item[3] = rs.getDate("ngaysinh");
-                item[4] = rs.getString("gioitinh");
-                item[5] = rs.getString("diachi");
-                item[6] = rs.getString("sdt");
-                item[7] = rs.getString("loaikh");
-                
-                tableModel.addRow(item);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
     public String GetCbbSelected(JComboBox cbb) {
         Object[] obj = cbb.getSelectedObjects();
         displayvalueModel item = (displayvalueModel) obj[0];
@@ -1902,12 +1863,15 @@ public class Trangchu extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -1947,6 +1911,10 @@ public class Trangchu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1971,7 +1939,9 @@ public class Trangchu extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1998,10 +1968,14 @@ public class Trangchu extends javax.swing.JFrame {
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
+    private javax.swing.JTable jTable9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JComboBox<String> jThang;
     private javax.swing.JComboBox<String> loaikh;

@@ -6,18 +6,11 @@
 package frm;
 
 import database_conf.connectDB;
-import java.awt.EventQueue;
-import java.awt.event.KeyEvent;
-import static java.lang.Class.forName;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Struct;
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -235,7 +228,8 @@ public class Themhdxuat extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         jTable1.setModel(tableModel);
-        
+        Taikhoan phienDN = new Taikhoan();
+       
         jComboBox1.setModel(LayDuLieucbb());
     }//GEN-LAST:event_formComponentShown
 

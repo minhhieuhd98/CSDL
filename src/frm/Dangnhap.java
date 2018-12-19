@@ -23,6 +23,7 @@ public class Dangnhap extends javax.swing.JFrame {
      */
     private connectDB db = new connectDB();
     private Connection conn = db.connect();
+    public int uLogin;
     
     public Dangnhap() {
         initComponents();
@@ -113,9 +114,8 @@ public class Dangnhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(checkLogin(jTextField1.getText(), jPasswordField1.getText())){
             Trangchu giaodien = new Trangchu();
-            this.show(true);
-            this.dispose();
-            System.out.println("frm.Dangnhap.jButton1ActionPerformed()");
+            giaodien.show(true);
+            
         }else {
             JOptionPane.showMessageDialog(null, "Sai tai khoan hoac mat khau");
         }
@@ -128,7 +128,11 @@ public class Dangnhap extends javax.swing.JFrame {
             stmt.setString(1, user);
             stmt.setString(2, pass);
             ResultSet rs = stmt.executeQuery();
-            if(rs.next()) return true;
+            if(rs.next()) {
+                
+                uLogin = rs.getInt("manv");
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Dangnhap.class.getName()).log(Level.SEVERE, null, ex);
         }

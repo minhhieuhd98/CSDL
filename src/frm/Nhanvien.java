@@ -6,6 +6,12 @@
 package frm;
 
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -21,6 +27,21 @@ public class Nhanvien {
     private Date ngaysinh;
     
     private Date ngayvaolam;
+    
+    public Nhanvien(){
+        
+    }
+    
+    public Nhanvien(int manv, String tennv, Date ngaysinh, boolean gioitinh, Date ngayvaolam, String chucvu, String diachi, String sdt){
+        this.manv = manv;
+        this.tennv = tennv;
+        this.ngaysinh = ngaysinh;
+        this.gioitinh = gioitinh;
+        this.ngayvaolam = ngayvaolam;
+        this.chucvu = chucvu;
+        this.diachi = diachi;
+        this.sdt = sdt;
+    }
     
     public void setMaNV(int manv){
         this.manv = manv;
@@ -50,8 +71,16 @@ public class Nhanvien {
         this.ngaysinh = new Date(nam, thang, ngay);
     }
     
+    public void setNgaySinh(Date birth){
+        this.ngaysinh = birth;
+    }
+    
     public void setNgayvaolam(int ngay, int thang, int nam){
         this.ngayvaolam = new Date(nam, thang, ngay);
+    }
+    
+    public void setNgayvaolam(Date birth){
+        this.ngayvaolam = birth;
     }
     
     public void setGioitinh(boolean x){
@@ -93,4 +122,6 @@ public class Nhanvien {
     public boolean getGioitinh(){
         return this.gioitinh;
     }
+    
+    
 }

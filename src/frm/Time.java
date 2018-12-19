@@ -13,7 +13,7 @@ import javax.swing.JComboBox;
  * @author mhieu
  */
 public class Time {
-    int ngay, thang, nam;
+    private int ngay, thang, nam;
     public String getDate(JComboBox cbb){
         String rs = cbb.getSelectedItem().toString();
         if(rs.length()==1) rs = "0" + rs;
