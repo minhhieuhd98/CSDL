@@ -5,6 +5,11 @@
  */
 package frm;
 
+import model.Time;
+import model.Taikhoan;
+import model.Sanpham;
+import model.Nhanvien;
+import model.KhachHang;
 import controller.FuncKhachHang;
 import controller.FuncNhanVien;
 import controller.FuncSanPham;
@@ -221,7 +226,7 @@ public class Trangchu extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Số Serial", "Mã sản phẩm", "Tên sản phẩm", "Loại sản phẩm", "Hãng sản xuất", "Giá nhập", "Giá bán", "Tồn kho", "Trạng thái", "Chú thích"
+                "STT", "Mã sản phẩm", "Tên sản phẩm", "Loại sản phẩm", "Hãng sản xuất", "Giá nhập", "Giá bán", "Tồn kho", "Trạng thái", "Chú thích"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -601,6 +606,11 @@ public class Trangchu extends javax.swing.JFrame {
         });
 
         jButton17.setText("Edit");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setText("Reset");
         jButton18.addActionListener(new java.awt.event.ActionListener() {
@@ -1246,6 +1256,11 @@ public class Trangchu extends javax.swing.JFrame {
         });
 
         jButton6.setText("Update");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Reset");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -1482,7 +1497,23 @@ public class Trangchu extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        Sanpham sp = new Sanpham();
+        sp.setMasp(Integer.parseInt(txtMasp.getText()));
+        sp.setTensp(txtTensp.getText());
+        sp.setHangSX(txtHangsx.getText());
+        sp.setLoaisp(Integer.parseInt(GetCbbSelected(cbLoaisp)));
+        sp.setGiaNhap(Integer.parseInt(txtGiaNhap.getText()));
+        sp.setGiaBan(Integer.parseInt(txtGiaBan.getText()));
+        sp.setLinkImage(jTextField1.getText());
+        sp.setChuthich(txtChuthich.getText());
         
+        FuncSanPham sanpham = new FuncSanPham();
+        if(sanpham.updateSP(sp)) {
+            JOptionPane.showMessageDialog(null, "update thanh cong");
+        } else {
+            JOptionPane.showMessageDialog(null, "Update khong thanh cong!");
+        }
+        sanpham.showsanpham(jTable1);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
@@ -1557,6 +1588,7 @@ public class Trangchu extends javax.swing.JFrame {
         else if(jRadioButton2.isSelected()) gioitinh=true;
         
         makhAdd = Integer.parseInt(makh.getText());
+        System.out.println(makhAdd);
         tenkhAdd = tenkh.getText();
         Time ngaysinh = new Time();
         Date ngaysinhkhAdd = new Date(Integer.parseInt(ngaysinh.getDate(jNgay)), Integer.parseInt(ngaysinh.getMonth(jThang)), Integer.parseInt(ngaysinh.getYear(jNam)));
@@ -1564,8 +1596,15 @@ public class Trangchu extends javax.swing.JFrame {
         diachikhAdd = diachikh.getText();
         sdtkhAdd = sdtkh.getText();
         loaikhAdd = loaikh.getSelectedItem().toString();
-        KhachHang khachhang = new KhachHang(makhAdd, tenkhAdd, ngaysinhkhAdd, gioitinh, diachikhAdd, sdtkhAdd, loaikhAdd);
-        
+        KhachHang khachhang = new KhachHang();
+        khachhang.setMaKH(makhAdd); khachhang.setTenKH(tenkhAdd); khachhang.setDiachi(diachikhAdd); khachhang.setSDT(sdtkhAdd);
+        khachhang.setGioitinh(gioitinh); khachhang.setLoaikh(loaikhAdd); khachhang.setNgaySinh(ngaysinhkhAdd);
+        try {
+            kh.themkh(khachhang);
+            System.out.println(khachhang.getMaKH());
+        } catch (ParseException ex) {
+            Logger.getLogger(Trangchu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         kh.showkhachhang(jTable3);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1727,6 +1766,52 @@ public class Trangchu extends javax.swing.JFrame {
         }
         tk.showTaiKhoan(jTable9);
     }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+        int manv = Integer.parseInt(jTFmanv.getText());
+        String tennv = jTFtennv.getText();
+        Time sngaysinh = new Time();
+        Date ngaysinh = new Date(Integer.parseInt(sngaysinh.getDate(jComboBox1)), Integer.parseInt(sngaysinh.getMonth(jComboBox2)), Integer.parseInt(sngaysinh.getYear(jComboBox5)));
+        boolean gioitinh = false;
+        if(jRadioButton4.isSelected()) gioitinh=true;
+        
+        Time nvl = new Time();
+        Date ngayvaolam = new Date(Integer.parseInt(nvl.getDate(jComboBox6)), Integer.parseInt(nvl.getMonth(jComboBox7)), Integer.parseInt(nvl.getYear(jComboBox8)));
+        
+        String chucvu = jTFchucvu.getText();
+        String diachi = jTFdiachi.getText();
+        String sdt = jTFsdt.getText();
+        FuncNhanVien nhanvien = new FuncNhanVien();
+        if(nhanvien.updateNV(new Nhanvien(manv, tennv, ngaysinh, gioitinh, ngayvaolam,chucvu, diachi, sdt))){
+            JOptionPane.showMessageDialog(null, "Them thanh cong");
+        } else {
+            JOptionPane.showMessageDialog(null, "Them that bai");
+        }
+        nhanvien.shownhanvien(jTable4);
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        FuncKhachHang kh = new FuncKhachHang();
+        int makhAdd;
+        String tenkhAdd ="", diachikhAdd = "", sdtkhAdd = "", loaikhAdd = "";
+        boolean gioitinh = true;
+        if(jRadioButton1.isSelected()) gioitinh=false;
+        else if(jRadioButton2.isSelected()) gioitinh=true;
+        
+        makhAdd = Integer.parseInt(makh.getText());
+        tenkhAdd = tenkh.getText();
+        Time ngaysinh = new Time();
+        Date ngaysinhkhAdd = new Date(Integer.parseInt(ngaysinh.getDate(jNgay)), Integer.parseInt(ngaysinh.getMonth(jThang)), Integer.parseInt(ngaysinh.getYear(jNam)));
+
+        diachikhAdd = diachikh.getText();
+        sdtkhAdd = sdtkh.getText();
+        loaikhAdd = loaikh.getSelectedItem().toString();
+        KhachHang khachhang = new KhachHang(makhAdd, tenkhAdd, ngaysinhkhAdd, gioitinh, diachikhAdd, sdtkhAdd, loaikhAdd);
+        kh.updateKH(khachhang);
+        kh.showkhachhang(jTable3);
+    }//GEN-LAST:event_jButton6ActionPerformed
     
     public DefaultComboBoxModel LayDuLieucbb(String bang, String Ten, String Ma) {
         String cautruyvan;

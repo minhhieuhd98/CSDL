@@ -6,8 +6,8 @@
 package controller;
 
 import database_conf.connectDB;
-import frm.Nhanvien;
-import frm.Time;
+import model.Nhanvien;
+import model.Time;
 import frm.Trangchu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -65,7 +65,7 @@ public class FuncNhanVien extends Nhanvien{
     }
     
     public void shownhanvien(JTable jT){
-        String query = "SELECT nv.manv, nv.tennv, nv.ngaysinh, nv.gioitinh, nv.ngayvaolam, nv.chucvu, nv.diachi, nv.sdt, nv.ghichu from nhanvien nv";
+        String query = "SELECT nv.manv, nv.tennv, nv.ngaysinh, nv.gioitinh, nv.ngayvaolam, nv.chucvu, nv.diachi, nv.sdt, nv.ghichu from nhanvien nv order by nv.manv ASC";
         
         int c = 0;
         
@@ -114,11 +114,11 @@ public class FuncNhanVien extends Nhanvien{
     
     public boolean updateNV(Nhanvien nv){
         if(nv == null){
-            System.out.println("SP is NULL");
+            System.out.println("NV is NULL");
             return false;
         } else {
-            String truyvan = "UPDATE sanpham nv SET nv.tennv = ?, nv.ngaysinh = ?, nv.gioitinh = ?"
-                    + "nv.ngayvaolam = ?, nv.chucvu=?,nv.diachi=?,nv.sdt=?, nv.ghichu=? WHERE nv.manv = ?";
+            String truyvan = "UPDATE nhanvien nv SET tennv = ?, ngaysinh = ?, gioitinh = ?,"
+                    + "ngayvaolam = ?, chucvu=?, diachi=?,sdt=?, ghichu=? WHERE nv.manv = ?";
             if(!isMaNV(nv.getMaNV())) {
                 JOptionPane.showMessageDialog(null, "Khong ton tai manv nay!");
                 return false;
@@ -188,5 +188,7 @@ public class FuncNhanVien extends Nhanvien{
         
         return rs;
     }
+    
+    
     
 }

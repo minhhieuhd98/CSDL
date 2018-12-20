@@ -6,8 +6,8 @@
 package controller;
 
 import database_conf.connectDB;
-import frm.KhachHang;
-import frm.Time;
+import model.KhachHang;
+import model.Time;
 import frm.Trangchu;
 import java.sql.Connection;
 import java.sql.Date;
@@ -48,7 +48,7 @@ public class FuncKhachHang extends KhachHang{
     
     public boolean themkh(KhachHang kh) throws ParseException{
         
-        if(kh.getMaKH() > 0) {
+        if(kh.getMaKH() < 0) {
             JOptionPane.showMessageDialog(null, "Ban chua nhap ma kh");
             return false;
         } else {
@@ -77,7 +77,7 @@ public class FuncKhachHang extends KhachHang{
     }
     
      public void showkhachhang(JTable jT){
-        String query = "SELECT kh.makh, kh.tenkh, kh.tenkh, kh.ngaysinh, kh.gioitinh, kh.diachi, kh.sdt, kh.loaikh from khachhang kh";
+        String query = "SELECT kh.makh, kh.tenkh, kh.tenkh, kh.ngaysinh, kh.gioitinh, kh.diachi, kh.sdt, kh.loaikh from khachhang kh order by kh.makh ASC";
         
         int c = 0;
         
@@ -122,13 +122,13 @@ public class FuncKhachHang extends KhachHang{
         return false;
     }
     
-    public boolean updateNV(KhachHang kh){
+    public boolean updateKH(KhachHang kh){
         if(kh == null){
-            System.out.println("SP is NULL");
+            System.out.println("KH is NULL");
             return false;
         } else {
-            String truyvan = "UPDATE khachhang kh SET kh.tenkh = ?, kh.ngaysinh = ?, kh.gioitinh = ?,"
-                    + "kh.diachi=?,kh.sdt=?, kh.loaikh=? WHERE kh.makh = ?";
+            String truyvan = "UPDATE khachhang kh SET tenkh = ?, ngaysinh = ?, gioitinh = ?,"
+                    + "diachi=?,sdt=?, loaikh=? WHERE kh.makh = ?";
             if(!isMaKH(kh.getMaKH())) {
                 JOptionPane.showMessageDialog(null, "Khong ton tai maKH nay!");
                 return false;

@@ -6,7 +6,7 @@
 package controller;
 
 import database_conf.connectDB;
-import frm.Sanpham;
+import model.Sanpham;
 import frm.Trangchu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -147,8 +147,8 @@ public class FuncSanPham extends Sanpham{
             System.out.println("SP is NULL");
             return false;
         } else {
-            String truyvan = "UPDATE sanpham sp SET sp.tensp = ?, sp.loaisp = ?, sp.hangsx = ?"
-                    + "sp.gianhap = ?, sp.giaban=?,sp.image=?,sp.chuthich=? WHERE sp.masp = ?";
+            String truyvan = "UPDATE sanpham sp SET tensp = ?, loaisp = ?, hangsx = ?,"
+                    + "gianhap = ?, giaban=?,image=?,chuthich=? WHERE sp.masp = ?";
             if(!isMasp(sp.getMasp())) {
                 JOptionPane.showMessageDialog(null, "Khong ton tai masp nay!");
                 return false;
@@ -216,4 +216,7 @@ public class FuncSanPham extends Sanpham{
         
         return rs;
     }
+    
+    
+    
 }

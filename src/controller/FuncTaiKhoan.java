@@ -6,7 +6,7 @@
 package controller;
 
 import database_conf.connectDB;
-import frm.Taikhoan;
+import model.Taikhoan;
 import frm.Trangchu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

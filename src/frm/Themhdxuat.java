@@ -5,6 +5,7 @@
  */
 package frm;
 
+import model.Taikhoan;
 import database_conf.connectDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
