@@ -27,6 +27,7 @@ public class Dangnhap extends javax.swing.JFrame {
     
     public Dangnhap() {
         initComponents();
+        
     }
 
     /**
@@ -114,7 +115,8 @@ public class Dangnhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(checkLogin(jTextField1.getText(), jPasswordField1.getText())){
             Trangchu giaodien = new Trangchu();
-            giaodien.show(true);
+            giaodien.show();
+            this.dispose();
             
         }else {
             JOptionPane.showMessageDialog(null, "Sai tai khoan hoac mat khau");
